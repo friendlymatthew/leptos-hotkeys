@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>demo</title>
     
-<script type="module" nonce="H817pv9kz2/nH4bJlKzDHw==">
-import init, * as bindings from '/demo-4c85cd46f96db05d.js';
-const wasm = await init('/demo-4c85cd46f96db05d_bg.wasm');
+<script type="module">
+import init, * as bindings from '/demo-82c2ed5aea704e5b.js';
+const wasm = await init({ module_or_path: '/demo-82c2ed5aea704e5b_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -68,7 +68,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
             }
         }
     </style>
-        <link rel="modulepreload" href="/demo-4c85cd46f96db05d.js" crossorigin=anonymous integrity="sha384-TbsgCJORGMNWQm0NMfPOZi8jOKfH6Mo7kqGW+MTCJNBF7/dAIt9eaYOaEF3EfDPO"><link rel="preload" href="/demo-4c85cd46f96db05d_bg.wasm" crossorigin=anonymous integrity="sha384-1dw1dBLccHTTjuMNyy0vdkWPqGSiD/sm6dkiC4pvz7OnKxBp6gJbQM0TOkqciFFY" as="fetch" type="application/wasm"></head>
+        <link rel="modulepreload" href="/demo-82c2ed5aea704e5b.js" crossorigin="anonymous" integrity="sha384-oziUUB8bmvOYLIKt+COFnBpFrjdchQCh1HIPIi3FeAkr6+EjYoq3UIM5rYiPoZeK"><link rel="preload" href="/demo-82c2ed5aea704e5b_bg.wasm" crossorigin="anonymous" integrity="sha384-ndxN17/tpsc74I4kkBXQOyQa2IPy1Yo4a29o+miwQOT9CDrSN3X2DITsdg9a2d/5" as="fetch" type="application/wasm"></head>
 <body>
 <script>"use strict";
 
@@ -162,7 +162,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
                         break;
                 }
             };
-            ws.onclose = this.onclose;
+            ws.onclose = () => this.onclose();
         }
 
         onclose() {
@@ -174,7 +174,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
                     // rebuilt on restart)
                     const ws = new WebSocket(this.url);
                     ws.onopen = () => window.location.reload();
-                    ws.onclose = this.onclose;
+                    ws.onclose = () => this.onclose();
                 },
                 this.poll_interval);
         }
