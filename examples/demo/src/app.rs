@@ -72,7 +72,7 @@ fn HomePage() -> impl IntoView {
 
     go_to_link(
         "controlleft+r,controlright+r",
-        "https://github.com/gaucho-labs/leptos_hotkeys".to_string(),
+        "https://github.com/gaucho-labs/leptos-hotkeys".to_string(),
         "*",
     );
 
